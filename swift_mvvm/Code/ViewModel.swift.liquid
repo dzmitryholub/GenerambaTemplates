@@ -1,0 +1,29 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxSwift
+import RxCocoa
+import Action
+
+class {{ module_info.name }}Model {
+    
+    private let bag = DisposeBag()
+}
+
+//MARK: ViewModelType
+extension {{ module_info.name }}Model: ViewModelType {
+    
+    struct Input { }
+    
+    struct Output { }
+    
+    func transform(input: Input) -> Output {
+        return Output()
+    }
+}
+

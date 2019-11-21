@@ -1,0 +1,12 @@
+# Template information section
+name: "swift_mvvm"
+summary: "MVVM module template with input and output"
+author: "Dmitry Holub"
+version: "1.0"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+# Module layer
+- {name: ViewController.swift, path: Code/ViewController.swift.liquid}
+- {name: ViewModel.swift, path: Code/ViewModel.swift.liquid}
