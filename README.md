@@ -1,12 +1,12 @@
-#Overview
+## Overview
 
-It's a custom catalog of templates forÊGenerambaÊcode generator. Repository contains templates for clean MVVM.
+It's a custom catalog of templates [Generamba](https://github.com/rambler-digital-solutions/Generamba) generator. Repository contains templates for clean MVVM.
 
-#Templates
+## Templates
 
-* api_module
-* swift_mvvm
-* use_case
+* [api_module](https://github.com/dmitry1993/GenerambaTemplates/tree/master/api_module)
+* [swift_mvvm](https://github.com/dmitry1993/GenerambaTemplates/tree/master/swift_mvvm)
+* [use_case](https://github.com/dmitry1993/GenerambaTemplates/tree/master/use_case)
 
 
 
