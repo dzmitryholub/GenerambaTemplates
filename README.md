@@ -1,8 +1,8 @@
-Overview
+#Overview
 
-It's a custom catalog of templates for Generamba code generator. Repository contains templates for clean MVVM.
+It's a custom catalog of templates for√äGeneramba√äcode generator. Repository contains templates for clean MVVM.
 
-Templates
+#Templates
 
 * api_module
 * swift_mvvm
