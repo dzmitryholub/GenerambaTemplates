@@ -1,0 +1,49 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Moya
+import ObjectMapper
+
+enum {{ module_info.name }}API {
+    case get{{ module_info.name }}(request: {{ module_info.name }}Request)
+}
+
+extension {{ module_info.name }}API: TargetType {
+    
+    var baseURL: URL { Credentials.Server.url }
+    
+    var path: String {
+        switch self {
+        case .get{{ module_info.name }}:
+            return "/endpoint"
+        }
+    }
+    
+    var method: Moya.Method {
+        switch self {
+        case .get{{ module_info.name }}:
+            return .get
+        }
+    }
+    
+    var sampleData: Data {
+        switch self {
+        case .get{{ module_info.name }}:
+            return Data()
+        }
+    }
+    
+    var task: Task {
+        switch self {
+        case .get{{ module_info.name }}(let request as Mappable):
+            return .requestCompositeParameters(bodyParameters: request.toJSON(), bodyEncoding: JSONEncoding.default, urlParameters: [:])
+        }
+    }
+    
+    var headers: [String: String]? { nil }
+}

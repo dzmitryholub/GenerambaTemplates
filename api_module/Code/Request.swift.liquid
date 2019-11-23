@@ -1,0 +1,25 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import ObjectMapper
+
+struct {{ module_info.name }}Request {
+    //var someValue = ""
+}
+
+//MARK: Mapping
+extension {{ module_info.name }}Request: Mappable {
+    
+    init?(map: Map) { }
+    
+    mutating func mapping(map: Map) {
+        //For mapping we can use this operator
+        
+        //someValue <- map["someValue"]
+    }
+}

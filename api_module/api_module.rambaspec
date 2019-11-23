@@ -1,0 +1,13 @@
+# Template information section
+name: "api_module"
+summary: "Template for RxMoya"
+author: "Dmitry Holub"
+version: "1.0"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+# Module layer
+- {name: Service.swift, path: Code/Service.swift.liquid}
+- {name: API.swift, path: Code/API.swift.liquid}
+- {name: Request.swift, path: Code/Request.swift.liquid}

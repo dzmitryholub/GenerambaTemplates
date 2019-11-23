@@ -1,0 +1,19 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Moya
+import RxSwift
+
+class {{ module_info.name }}Setvice: NetworkService {
+    
+    let provider = MoyaProvider<{{ module_info.name }}API>()
+    
+    func get{{ module_info.name }}(request: TestRequest) -> Single<Result<{{ module_info.name }}Request, NetworkError>> {
+        fetchMappable(.get{{ module_info.name }}(request: request))
+    }
+}
