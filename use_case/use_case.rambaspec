@@ -1,0 +1,11 @@
+# Template information section
+name: "use_case"
+summary: "Use Case for clean architecture"
+author: "Dmitry Holub"
+version: "1.0"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+# Module layer
+- {name: UseCase.swift, path: Code/UseCase.swift.liquid}

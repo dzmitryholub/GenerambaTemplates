@@ -1,0 +1,31 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxCocoa
+import RxSwift
+
+struct {{ module_info.name }}UseCase {
+   
+}
+
+//MARK: UseCaseType
+extension {{ module_info.name }}UseCase: UseCaseType {
+    
+    struct Input { }
+    
+    struct Output { }
+    
+    func produce(input: Input) -> Output {
+        return Output()
+    }
+}
+
+//MARK: Private
+private extension {{ module_info.name }}UseCase {
+
+}
