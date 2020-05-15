@@ -9,11 +9,11 @@
 import Moya
 import RxSwift
 
-class {{ module_info.name }}Setvice: NetworkService {
+class {{ module_info.name }}Service: NetworkService {
     
     let provider = MoyaProvider<{{ module_info.name }}API>()
     
-    func get{{ module_info.name }}(request: TestRequest) -> Single<Result<{{ module_info.name }}Request, NetworkError>> {
+    func get{{ module_info.name }}(request: {{ module_info.name }}Request) -> Single<Result<{{ module_info.name }}Request, NetworkError>> {
         fetchMappable(.get{{ module_info.name }}(request: request))
     }
 }
