@@ -1,0 +1,26 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Rswift
+
+protocol TableViewCellConfigurator {
+    var tableView: UITableView { get }
+    
+    init(tableView: UITableView)
+    func getCell<T: UITableViewCell>(reuseIdentifier: ReuseIdentifier<T>,
+                                     indexPath: IndexPath) -> T
+}
+
+extension TableViewCellConfigurator {
+    
+    func getCell<T: UITableViewCell>(reuseIdentifier: ReuseIdentifier<T>, indexPath: IndexPath) -> T {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
+                                                       for: indexPath) else { return T() }
+        return cell
+    }
+}

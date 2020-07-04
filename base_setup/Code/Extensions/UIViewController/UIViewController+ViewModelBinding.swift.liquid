@@ -1,0 +1,21 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxSwift
+
+extension UIViewController {
+    
+    func transform<ViewModel: ViewModelType>(input: ViewModel.Input, to viewModel: ViewModel,
+                                             disposingTo bag: DisposeBag)
+        -> ViewModel.Output where ViewModel.Output: WithLoadingAndErrors {
+            let output = viewModel.transform(input: input)
+            output.errors.emit(to: rx.error).disposed(by: bag)
+            output.isLoading.drive(rx.isLoading).disposed(by: bag)
+            return output
+    }
+}

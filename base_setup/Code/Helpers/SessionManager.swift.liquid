@@ -1,0 +1,26 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+class SessionManager {
+    
+    private var store: AccessTokenStore
+    
+    init(store: AccessTokenStore = SessionTokenStore.shared) {
+        self.store = store
+    }
+    
+    func set(token: AccessToken) { store.token = token }
+    
+    func retrieveToken() -> AccessToken? { store.token }
+    
+    func removeToken() { store.token = nil }
+    
+    func hasToken() -> Bool { store.token != nil }
+}
