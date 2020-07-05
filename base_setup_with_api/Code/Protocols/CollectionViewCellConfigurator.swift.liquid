@@ -1,0 +1,25 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Rswift
+
+protocol CollectionViewCellConfigurator {
+    var collectionView: UICollectionView { get }
+    
+    init(collectionView: UICollectionView)
+    func getCell<T: UICollectionViewCell>(reuseIdentifier: ReuseIdentifier<T>, indexPath: IndexPath) -> T
+}
+
+extension CollectionViewCellConfigurator {
+    
+    func getCell<T: UICollectionViewCell>(reuseIdentifier: ReuseIdentifier<T>, indexPath: IndexPath) -> T {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
+                                                            for: indexPath) else { return T() }
+        return cell
+    }
+}

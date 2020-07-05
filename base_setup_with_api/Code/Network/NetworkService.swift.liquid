@@ -1,0 +1,87 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxSwift
+import Moya
+import ObjectMapper
+
+protocol NetworkService {
+    associatedtype API: TargetType
+    var provider: MoyaProvider<API> { get }
+}
+
+// MARK: Private
+extension NetworkService {
+    
+    typealias ServiceError = AppError & ResponseHandler
+    
+    func send<Error: ServiceError>(_ api: API) -> Single<Result<Void, Error>> {
+        makeRequest(to: api).map { result in
+            result.flatMap { response in
+                guard (try? response.filterSuccessfulStatusCodes()) != nil else { return .failure(Error(response: response)) }
+                return .success(())
+            }
+        }
+    }
+    
+    func fetchString<Error: ServiceError>(_ api: API) -> Single<Result<String, Error>> {
+        makeRequest(to: api).map { result in
+            result.flatMap { response in
+                guard let data = try? response.mapString() else { return .failure(Error(response: response)) }
+                return .success(data)
+            }
+        }
+    }
+    
+    func fetchValue<T, Error: ServiceError>(_ api: API, key: String? = nil) -> Single<Result<T, Error>> {
+        makeRequest(to: api).map { result in
+            result.flatMap { response in
+                let valueForKey = key.flatMap { response.json?[$0] as? T }
+                guard let data = valueForKey ?? (try? response.mapJSON()).flatMap({ $0 as? T }) else {
+                    return .failure(Error(response: response))
+                }
+                return .success(data)
+            }
+        }
+    }
+    
+    func fetchMappable<T: Mappable, Error: ServiceError>(_ api: API, key: String? = nil) -> Single<Result<T, Error>> {
+        makeRequest(to: api).map { result in
+            result.flatMap { response in
+                let valueForKey = key.flatMap { response.json?[$0] as? [String: Any] }.map { T(JSON: $0) }
+                guard let data = valueForKey ?? T(response: response) else { return .failure(Error(response: response)) }
+                return .success(data)
+            }
+        }
+    }
+    
+    func fetchArray<T: Mappable, Error: ServiceError>(_ api: API, key: String? = nil) -> Single<Result<[T], Error>> {
+        makeRequest(to: api).map { result in
+            result.flatMap { response in
+                let valueForKey = key.flatMap { response.json?[$0] as? [[String: Any]] }.map { [T](JSONArray: $0) }
+                guard let data = valueForKey ?? [T](response: response) else { return .failure(Error(response: response)) }
+                return .success(data)
+            }
+        }
+    }
+    
+    func fetchImage<Error: ServiceError>(_ api: API) -> Single<Result<UIImage, Error>> {
+        makeRequest(to: api).map { result in
+            result.flatMap { response in
+                guard let image = try? response.mapImage() else { return .failure(Error(response: response)) }
+                return .success(image)
+            }
+        }
+    }
+    
+    private func makeRequest<Error: ServiceError>(to api: API) -> Single<Result<Response, Error>> {
+        provider.rx.request(api)
+            .map { Error(mapFrom: $0).map { .failure($0) } ?? .success($0) }
+            .catchError { Single.just(.failure(Error(title: nil, message: $0.localizedDescription))) }
+    }
+}

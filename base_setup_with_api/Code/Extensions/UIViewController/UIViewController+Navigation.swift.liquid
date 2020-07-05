@@ -1,0 +1,75 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxSwift
+import RxCocoa
+import Rswift
+import SegueManager
+
+extension UIViewController {
+    
+    @IBAction private func backAction() {
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
+        } else {
+            dismiss(animated: true)
+        }
+    }
+}
+
+extension Reactive where Base: UIViewController {
+    
+    func back(animated: Bool) -> Binder<Void> {
+        Binder(self.base) { viewController, _ in
+            if let navigationController = viewController.navigationController {
+                navigationController.popViewController(animated: animated)
+            } else {
+                viewController.dismiss(animated: animated)
+            }
+        }
+    }
+}
+
+extension Reactive where Base: UIViewController & SeguePerformer {
+    
+    func navigate<Segue, Destination, Value>(with segue: StoryboardSegueIdentifier<Segue, Base, Destination>,
+                                             segueHandler: ((TypedStoryboardSegueInfo<Segue, Base, Destination>, Value) -> Void)? = nil)
+        -> Binder<Value> {
+        Binder(base) { viewController, value in
+            DispatchQueue.main.async {
+                if let handler = segueHandler {
+                    viewController.performSegue(withIdentifier: segue) { handler($0, value) }
+                } else {
+                    viewController.performSegue(withIdentifier: segue)
+                }
+            }
+        }
+    }
+}
+
+extension Reactive where Base: UIViewController {
+    
+    func show<Value, ViewController: UIViewController>(viewController: @escaping @autoclosure () -> ViewController,
+                                                       animated: Bool,
+                                                       showHandler: ((ViewController, Value) -> Void)? = nil) -> Binder<Value> {
+        Binder(base) { baseController, value in
+            let viewController = viewController()
+            showHandler?(viewController, value)
+            baseController.present(viewController, animated: animated)
+        }
+    }
+}
+
+class SegueManagerTableViewController: UITableViewController, SeguePerformer {
+    
+    public lazy var segueManager: SegueManager = { SegueManager(viewController: self) }()
+    
+    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueManager.prepare(for: segue)
+    }
+}

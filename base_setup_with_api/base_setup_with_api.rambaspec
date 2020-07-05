@@ -7,6 +7,7 @@ license: "MIT"
 
 # The declarations for code files
 code_files:
+
 # Protocols
 - {name: Common/Protocols/UseCaseType.swift, path: Code/Protocols/UseCaseType.swift.liquid}
 - {name: Common/Protocols/ViewModelType.swift, path: Code/Protocols/ViewModelType.swift.liquid}
@@ -23,3 +24,12 @@ code_files:
 - {name: Common/Extensions/UIViewController/UIViewController+HUD.swift, path: Code/Extensions/UIViewController/UIViewController+HUD.swift.liquid}
 - {name: Common/Extensions/UIViewController/UIViewController+Navigation.swift, path: Code/Extensions/UIViewController/UIViewController+Navigation.swift.liquid}
 - {name: Common/Extensions/Reactive.swift, path: Code/Extensions/Reactive.swift.liquid}
+
+# Helpers
+- {name: Common/Helpers/SessionManager.swift, path: Code/Helpers/SessionManager.swift.liquid}
+- {name: Common/Helpers/AccessTokenStore.swift, path: Code/Helpers/AccessTokenStore.swift.liquid}
+
+# Network
+- {name: Common/Network/Plugins/AuthPlugin.swift, path: Code/Network/AuthPlugin.swift.liquid}
+- {name: Common/Network/Base/NetworkService.swift, path: Code/Network/NetworkService.swift.liquid}
+- {name: Common/Network/Base/NetworkUtils.swift, path: Code/Network/NetworkUtils.swift.liquid}
