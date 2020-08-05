@@ -15,7 +15,7 @@ class {{ module_info.name }}ViewModel {
     private let bag = DisposeBag()
 }
 
-//MARK: ViewModelType
+// MARK: ViewModelType
 extension {{ module_info.name }}ViewModel: ViewModelType {
     
     struct Input { }
@@ -23,6 +23,6 @@ extension {{ module_info.name }}ViewModel: ViewModelType {
     struct Output { }
     
     func transform(input: Input) -> Output {
-        return Output()
+        Output()
     }
 }
