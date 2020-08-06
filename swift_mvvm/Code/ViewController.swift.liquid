@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class {{ module_info.name }}ViewController: UIViewController {
+final class {{ module_info.name }}ViewController: UIViewController {
     
     private let bag = DisposeBag()
     private let viewModel = {{ module_info.name }}ViewModel()
