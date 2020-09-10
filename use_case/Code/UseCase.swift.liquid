@@ -13,7 +13,7 @@ struct {{ module_info.name }}UseCase {
    
 }
 
-//MARK: UseCaseType
+// MARK: UseCaseType
 extension {{ module_info.name }}UseCase: UseCaseType {
     
     struct Input { }
@@ -21,11 +21,11 @@ extension {{ module_info.name }}UseCase: UseCaseType {
     struct Output { }
     
     func produce(input: Input) -> Output {
-        return Output()
+        Output()
     }
 }
 
-//MARK: Private
+// MARK: Private
 private extension {{ module_info.name }}UseCase {
 
 }
