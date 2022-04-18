@@ -1,0 +1,28 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxCocoa
+import RxSwift
+
+final class {{ module_info.name }}ViewController: UIViewController {
+    
+    private let bag = DisposeBag()
+    private let viewModel: {{ module_info.name }}ViewModelType?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        bind()
+    }
+}
+
+// MARK: Binding
+private extension {{ module_info.name }}ViewController {
+    
+    func bind() { }
+}
