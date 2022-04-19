@@ -12,7 +12,7 @@ import RxSwift
 final class {{ module_info.name }}ViewController: UIViewController {
     
     private let bag = DisposeBag()
-    private let viewModel: {{ module_info.name }}ViewModelType?
+    private var viewModel: {{ module_info.name }}ViewModelType?
 
     override func viewDidLoad() {
         super.viewDidLoad()

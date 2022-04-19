@@ -18,9 +18,9 @@ final class {{ module_info.name }}ViewModel {
 // MARK: ViewModelType
 extension {{ module_info.name }}ViewModel: ViewModelType {
     
-    struct Input { }
+    struct Input: module_info.name }}Input { }
     
-    struct Output { }
+    struct Output: {{ module_info.name }}Output { }
     
     func transform(input: Input) -> Output {
         Output()
