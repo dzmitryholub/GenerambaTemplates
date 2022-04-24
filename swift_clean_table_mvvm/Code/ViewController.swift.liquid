@@ -1,0 +1,39 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxCocoa
+import RxSwift
+
+final class {{ module_info.name }}ViewController: UIViewController {
+
+    @IBOutlet private weak var tableView: UITableView!
+    
+    private let bag = DisposeBag()
+    private lazy var cellsConfigurator = {{ module_info.name }}CellsConfigurator(tableView: tableView)
+    private var viewModel: {{ module_info.name }}ViewModelType?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        bind()
+    }
+}
+
+// MARK: Binding
+private extension {{ module_info.name }}ViewController {
+    
+    func bind() {
+        guard let viewModel = viewModel else { return }
+        let input = viewModel.input(viewWillAppear: rx.viewWillAppear.asDriver())
+        let output = viewModel.outputTransform(input: input)
+        output.items.drive(tableView.rx.items) { [unowned self] tableView, row, element in
+            let indexPath = IndexPath(row: row, section: 0)
+            return self.cellsConfigurator.getCell(type: element, indexPath: indexPath)
+        }.disposed(by: bag)
+    }
+}

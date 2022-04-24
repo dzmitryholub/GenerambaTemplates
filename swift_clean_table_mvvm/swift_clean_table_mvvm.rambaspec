@@ -1,0 +1,16 @@
+# Template information section
+name: "swift_clean_mvvm"
+summary: "Clean MVVM module template with input and output"
+author: "Dmitry Holub"
+version: "1.0"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+# Module layer
+- {name: ViewController.swift, path: Code/ViewController.swift.liquid}
+- {name: ViewModel.swift, path: Code/ViewModel.swift.liquid}
+- {name: ViewModelType.swift, path: Code/ViewModelType.swift.liquid}
+- {name: Coordinator.swift, path: Code/Coordinator.swift.liquid}
+- {name: Coordinator+Rx.swift, path: Code/Coordinator+Rx.swift.liquid}
+- {name: CellsConfigurator.swift, path: Code/CellsConfigurator.swift.liquid}

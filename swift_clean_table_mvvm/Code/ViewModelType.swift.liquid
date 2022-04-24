@@ -1,0 +1,23 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxSwift
+import RxCocoa
+
+protocol {{ module_info.name }}ViewModelType {
+    func outputTransform(input: {{ module_info.name }}Input) -> {{ module_info.name }}Output
+    func input(viewWillAppear: Driver<Void>) -> {{ module_info.name }}Input
+}
+
+protocol {{ module_info.name }}Input {
+    var viewWillAppear: Driver<Void> { get }
+}
+
+protocol {{ module_info.name }}Output {
+    var items: Driver<[{{ module_info.name }}CellType]> { get }
+}

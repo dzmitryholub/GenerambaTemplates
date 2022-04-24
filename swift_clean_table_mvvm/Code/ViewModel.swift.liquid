@@ -1,0 +1,45 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxSwift
+import RxCocoa
+import Common
+
+final class {{ module_info.name }}ViewModel {
+    
+    private let bag = DisposeBag()
+}
+
+// MARK: ViewModelType
+extension {{ module_info.name }}ViewModel: ViewModelType {
+    
+    struct Input: {{ module_info.name }}Input {
+        let viewWillAppear: Driver<Void>
+    }
+    
+    struct Output: {{ module_info.name }}Output {
+        let items: Driver<[{{ module_info.name }}CellType]>
+    }
+    
+    func transform(input: Input) -> Output {
+        Output(items: .just([]))
+    }
+}
+
+// MARK: {{ module_info.name }}ViewModelType
+extension {{ module_info.name }}ViewModel: {{ module_info.name }}ViewModelType {
+    
+    func outputTransform(input: {{ module_info.name }}Input) -> {{ module_info.name }}Output {
+        guard let input = input as? Input else { preconditionFailure("Wrong type") }
+        return transform(input: input)
+    }
+    
+    func input(viewWillAppear: Driver<Void>) -> {{ module_info.name }}Input {
+        Input(viewWillAppear: viewWillAppear)
+    }
+}
