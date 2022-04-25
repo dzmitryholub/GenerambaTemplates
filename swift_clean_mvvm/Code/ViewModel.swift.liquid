@@ -12,7 +12,12 @@ import Common
 
 final class {{ module_info.name }}ViewModel {
     
+    private let coordinator: {{ module_info.name }}Coordinator
     private let bag = DisposeBag()
+
+    init(coordinator: {{ module_info.name }}Coordinator) {
+        self.coordinator = coordinator
+    }
 }
 
 // MARK: ViewModelType

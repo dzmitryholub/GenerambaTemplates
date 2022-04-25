@@ -19,10 +19,18 @@ final class {{ module_info.name }}ViewController: UIViewController {
 
         bind()
     }
+
+    func configure(viewModel: {{ module_info.name }}ViewModelType) {
+        self.viewModel = viewModel
+    }
 }
 
 // MARK: Binding
 private extension {{ module_info.name }}ViewController {
     
-    func bind() { }
+    func bind() {
+        guard let viewModel = viewModel else { return }
+        let input = viewModel.input()
+        let output = viewModel.outputTransform(input: input)
+    }
 }
