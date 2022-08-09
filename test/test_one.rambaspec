@@ -1,0 +1,15 @@
+# Template information section
+name: "test_one"
+summary: "Clean MVVM module template with input and output"
+author: "Dmitry Holub"
+version: "1.0"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+# Module layer
+- {name: ViewController.swift, path: TestOne/ViewController.swift.liquid}
+- {name: ViewModel.swift, path: TestOne/ViewModel.swift.liquid}
+- {name: ViewModelType.swift, path: TestOne/ViewModelType.swift.liquid}
+- {name: Coordinator.swift, path: Coordinator.swift.liquid}
+- {name: Coordinator+Rx.swift, path: Coordinator+Rx.swift.liquid}
