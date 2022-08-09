@@ -8,8 +8,8 @@ license: "MIT"
 # The declarations for code files
 code_files:
 # Module layer
-- {name: ViewController.swift, path: Code/ViewController.swift.liquid}
-- {name: ViewModel.swift, path: Code/ViewModel.swift.liquid}
-- {name: ViewModelType.swift, path: Code/ViewModelType.swift.liquid}
-- {name: Coordinator.swift, path: ./base_coordiantor/Coordinator.swift.liquid}
-- {name: Coordinator+Rx.swift, path: ./base_coordiantor/Coordinator+Rx.swift.liquid}
+- {name: ViewController.swift, path: Test/ViewController.swift.liquid}
+- {name: ViewModel.swift, path: Test/ViewModel.swift.liquid}
+- {name: ViewModelType.swift, path: Test/ViewModelType.swift.liquid}
+- {name: Coordinator.swift, path: Coordinator.swift.liquid}
+- {name: Coordinator+Rx.swift, path: Coordinator+Rx.swift.liquid}
