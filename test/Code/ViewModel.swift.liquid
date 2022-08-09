@@ -1,0 +1,46 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import RxSwift
+import RxCocoa
+import Common
+
+final class {{ module_info.name }}ViewModel {
+    
+    private let coordinator: {{ module_info.name }}Coordinator
+    private let bag = DisposeBag()
+
+    init(coordinator: {{ module_info.name }}Coordinator) {
+        self.coordinator = coordinator
+    }
+}
+
+// MARK: ViewModelType
+extension {{ module_info.name }}ViewModel: ViewModelType {
+    
+    struct Input: {{ module_info.name }}Input { }
+    
+    struct Output: {{ module_info.name }}Output { }
+    
+    func transform(input: Input) -> Output {
+        Output()
+    }
+}
+
+// MARK: {{ module_info.name }}ViewModelType
+extension {{ module_info.name }}ViewModel: {{ module_info.name }}ViewModelType {
+    
+    func outputTransform(input: {{ module_info.name }}Input) -> {{ module_info.name }}Output {
+        guard let input = input as? Input else { preconditionFailure("Wrong type") }
+        return transform(input: input)
+    }
+    
+    func input() -> {{ module_info.name }}Input {
+        Input()
+    }
+}
