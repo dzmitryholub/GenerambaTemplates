@@ -6,10 +6,10 @@ It's a custom catalog of templates [Generamba](https://github.com/rambler-digita
 
 ## Templates
 
-* [api_module](https://github.com/dzmitry.holub/GenerambaTemplates/tree/master/api_module)
-* [use_case](https://github.com/dzmitry.holub/GenerambaTemplates/tree/master/use_case)
-* [swift_clean_mvvm](https://github.com/dzmitry.holub/GenerambaTemplates/tree/master/swift_clean_mvvm)
-* [swift_clean_table_mvvm](https://github.com/dzmitry.holub/GenerambaTemplates/tree/master/swift_clean_table_mvvm)
+* [api_module](https://github.com/dzmitryholub/GenerambaTemplates/tree/master/api_module)
+* [use_case](https://github.com/dzmitryholub/GenerambaTemplates/tree/master/use_case)
+* [swift_clean_mvvm](https://github.com/dzmitryholub/GenerambaTemplates/tree/master/swift_clean_mvvm)
+* [swift_clean_table_mvvm](https://github.com/dzmitryholub/GenerambaTemplates/tree/master/swift_clean_table_mvvm)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
