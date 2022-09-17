@@ -1,0 +1,31 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+final class {{ module_info.name }}Coordinator {
+    
+    private weak var presenter: UINavigationController?
+    
+    init(presenter: UINavigationController?) {
+        self.presenter = presenter
+    }
+    
+    func start() {
+        guard let viewController = makeViewController() else { return }
+        presenter?.pushViewController(viewController, animated: false)
+    }
+}
+
+// MARK: Private
+private extension {{ module_info.name }}Coordinator {
+    
+    func makeViewController() -> UIViewController? {
+        nil
+    }
+}

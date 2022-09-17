@@ -1,0 +1,34 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Common
+import UIKit
+
+enum {{ module_info.name }}CellType {}
+
+final class {{ module_info.name }}CellsConfigurator: TableViewCellConfigurable {
+    
+    let tableView: UITableView
+    
+    init(tableView: UITableView) {
+        self.tableView = tableView
+        registerCells()
+    }
+    
+    func getCell(type: {{ module_info.name }}CellType, indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
+
+// MARK: Private
+private extension {{ module_info.name }}CellsConfigurator {
+    
+    func registerCells() {
+        
+    }
+}
